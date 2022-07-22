@@ -6,7 +6,7 @@ import PatientData from './patient.checkIn.TestData'
 import CheckInPage from '../../pageObjects/pages/checkin.page'
 import RTApiData from '../../specs/api/rt.api.testdata'
 
-describe(
+describe.skip(
   'LogIn /Authentication Epic test suite',
   {
     retries: {
