@@ -1,7 +1,5 @@
 /// <reference types="cypress" />
 
-import WelcomePage from '../../pageObjects/pages/welcome.page';
-import AppointmentPage from '../../pageObjects/pages/appointment.page';
 
 import patientData from './patient.checkin.testdata'
 
