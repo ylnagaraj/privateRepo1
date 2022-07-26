@@ -26,6 +26,7 @@ jobs:
           record: true
           parallel: true
           group: GH Action parallel
+          browser: chrome
           #start: npm start
         env:
           # pass the Dashboard record key as an environment variable
@@ -61,7 +62,8 @@ jobs:
           # on Mac and Linux we can use "npm start"
           #start: npm start
           # but for this particular project on Windows we need a different start command
-          start-windows: npm run start
+          #start-windows: npm run start
+          browser: chrome
         env:
           # pass the Dashboard record key as an environment variable
           CYPRESS_RECORD_KEY: 4c244494-77de-49fd-bba3-efc3da3a1aec
