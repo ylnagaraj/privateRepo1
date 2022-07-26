@@ -18,7 +18,7 @@ jobs:
       - name: Cypress install
         uses: cypress-io/github-action@v4
         with:
-          start: yarn start:ci
+          #start: yarn start:ci
           browser: ${{matrix.browsers}}
           record: false
           parallel: false
