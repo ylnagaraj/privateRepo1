@@ -1,4 +1,4 @@
-name: Cypress Functional End-to-End Testing of RainTree Kiosk
+name: Cross-Browser testing
 
 on: [push]
 
@@ -6,6 +6,9 @@ jobs:
   cypress-run:
     runs-on: ubuntu-latest
     container: cypress/browsers:node12.18.3-chrome87-ff82
+    strategy:
+      matrix:
+        browsers: [chrome]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -16,4 +19,4 @@ jobs:
         uses: cypress-io/github-action@v4
         with:
           # Specify Browser since container image is compile with chrome
-          browser: chrome
+          browser: ${{matrix.browsers}}
