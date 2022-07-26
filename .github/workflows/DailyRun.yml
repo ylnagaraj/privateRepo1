@@ -8,7 +8,7 @@ jobs:
     #container: cypress/browsers:node12.18.3-chrome87-ff82
     strategy:
       matrix:
-        browsers: [chrome, firefox]
+        browsers: [chrome, firefox, edge]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -18,5 +18,5 @@ jobs:
       - name: Cypress run tests
         uses: cypress-io/github-action@v4
         with:
-          # Specify Browser since container image is compile with chrome
+          # Run on all different browsers mentioned in matrix above
           browser: ${{matrix.browsers}}
