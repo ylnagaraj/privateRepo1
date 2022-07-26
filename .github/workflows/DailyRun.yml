@@ -3,7 +3,7 @@ name: Cypress Tests
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron: '00 10 * * *'
+    - cron: '40 10 * * *'
 
 jobs:
 
@@ -44,7 +44,8 @@ jobs:
       fail-fast: false
       matrix:
         # run copies of the current job in parallel
-        containers: [1, 2, 3, 4, 5]
+        containers: [1, 2]
+        browsers: [chrome, firefox, edge]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -55,13 +56,11 @@ jobs:
           name: build
           path: build
 
-      - name: "UI Tests - Chrome - Windows"
+      - name: "UI Tests - Windows"
         uses: cypress-io/github-action@v4
         with:
           start: yarn start:ci
-          wait-on: "http://localhost:3000"
           wait-on-timeout: 120
-          browser: chrome
-          record: true
+          browser: ${{matrix.browsers}}
+          record: false
           parallel: true
-          group: "UI - Chrome - Windows"
