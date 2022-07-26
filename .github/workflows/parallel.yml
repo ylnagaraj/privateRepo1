@@ -19,10 +19,6 @@ jobs:
       
       - name: Save build folder
         uses: actions/upload-artifact@v3
-        with:
-          name: build
-          if-no-files-found: error
-          path: build
 
   install-windows:
     runs-on: windows-2019
@@ -37,10 +33,6 @@ jobs:
       
       - name: Save build folder
         uses: actions/upload-artifact@v3
-        with:
-          name: build
-          if-no-files-found: error
-          path: build
 
   ui-chrome-tests:
     timeout-minutes: 15
@@ -62,9 +54,6 @@ jobs:
 
       - name: Download the build folders
         uses: actions/download-artifact@v3
-        with:
-          name: build
-          path: build
 
       - name: "UI Tests - Chrome"
         uses: cypress-io/github-action@v2
@@ -103,10 +92,7 @@ jobs:
 
       - name: Download the build folders
         uses: actions/download-artifact@v3
-        with:
-          name: build
-          path: build
-
+        
       - name: "UI Tests - Electron - Windows"
         uses: cypress-io/github-action@v2
         with:
@@ -115,8 +101,8 @@ jobs:
           wait-on-timeout: 120
           record: true
           parallel: true
-          group: "UI - Electron - Windows"
-          spec: cypress/tests/ui/*
+          #group: "UI - Electron - Windows"
+          #spec: cypress/tests/ui/*
         env:
           CYPRESS_PROJECT_ID: iu173r
           CYPRESS_RECORD_KEY: 4c244494-77de-49fd-bba3-efc3da3a1aec
