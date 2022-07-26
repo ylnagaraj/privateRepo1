@@ -15,11 +15,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Cypress install
+      - name: Cypress Run
         uses: cypress-io/github-action@v4
         with:
-          #start: yarn start:ci
+          build: npm run build
+          start: npm start
           browser: ${{matrix.browsers}}
-          record: false
-          parallel: false
-          group: 'e2e Testing'
