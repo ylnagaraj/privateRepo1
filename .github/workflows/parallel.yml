@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - qa
 jobs:
   install:
     runs-on: ubuntu-latest
@@ -17,14 +16,7 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           runTests: false
-      # report machine parameters
-      - run: yarn cypress info
-      - run: node -p 'os.cpus()'
-      - run: yarn types
-      - run: yarn lint
-      - run: yarn test:unit:ci
-      - run: yarn build:ci
-
+      
       - name: Save build folder
         uses: actions/upload-artifact@v3
         with:
@@ -42,14 +34,7 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           runTests: false
-      # report machine parameters
-      - run: yarn cypress info
-      - run: node -p 'os.cpus()'
-      - run: yarn types
-      - run: yarn lint
-      - run: yarn test:unit:ci
-      - run: yarn build:ci
-
+      
       - name: Save build folder
         uses: actions/upload-artifact@v3
         with:
@@ -98,6 +83,7 @@ jobs:
           # Recommended: pass the GitHub token lets this action correctly
           # determine the unique run id necessary to re-run the checks
           # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
   ui-windows-tests:
     timeout-minutes: 40
     runs-on: windows-2019
