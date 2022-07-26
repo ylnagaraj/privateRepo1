@@ -1,9 +1,9 @@
-name: Cypress Tests
+name: Cypress Cross-browser Testing - DailyRun
 
-on:
-  schedule:
+on: [push]
+  #schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron: '40 10 * * *'
+    #- cron: '40 10 * * *'
 
 jobs:
 
@@ -18,12 +18,12 @@ jobs:
         with:
           runTests: false
       # report machine parameters
-      - run: yarn cypress info
-      - run: node -p 'os.cpus()'
-      - run: yarn types
-      - run: yarn lint
-      - run: yarn test:unit:ci
-      - run: yarn build:ci
+      #- run: yarn cypress info
+      #- run: node -p 'os.cpus()'
+      #- run: yarn types
+      #- run: yarn lint
+      #- run: yarn test:unit:ci
+      #- run: yarn build:ci
 
       - name: Save build folder
         uses: actions/upload-artifact@v3
