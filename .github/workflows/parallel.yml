@@ -1,9 +1,7 @@
 name: Cypress Parallel Run
 
-on:
-  push:
-    branches:
-      - main
+on: [pull_request]
+  
 jobs:
   install:
     runs-on: ubuntu-latest
