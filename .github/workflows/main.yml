@@ -1,6 +1,6 @@
 name: Cypress Functional End-to-End Testing of RainTree Kiosk
 
-on: [push]
+on: [fork]
 
 jobs:
   cypress-run:
