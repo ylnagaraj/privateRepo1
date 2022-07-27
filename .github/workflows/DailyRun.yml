@@ -6,11 +6,11 @@ on: push
     #- cron: '30 8 * * *'
 
 jobs:
-  cypress-run:
-    runs-on: ubuntu-latest
+  cypress-crossbrowser-testing:
+    runs-on: windows-latest
     strategy:
       matrix:
-        browsers: [firefox]
+        browsers: [chrome, firefox, edge]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
