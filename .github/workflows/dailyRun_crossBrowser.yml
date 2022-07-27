@@ -1,4 +1,4 @@
-name: Cross-Browser Testing
+name: Cypress Cross-Browser Testing - DailyRun
 
 on:
   schedule:
