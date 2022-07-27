@@ -1,0 +1,33 @@
+name: Cypress Parallel Execution
+
+on: [push]
+
+jobs:
+  parallel-run:
+    name: Parallel 3x
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # run 3 copies of the current job in parallel
+        # the actual items in the array do not matter
+        # we just need to "force" GitHub CI to create 3 jobs
+        machines: [1, 2, 3]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      # because of "record" and "parallel" parameters
+      # these containers will load balance all found tests among themselves
+      - name: run tests
+        uses: cypress-io/github-action@v4
+        timeout-minutes: 5
+        with:
+          record: true
+          parallel: true
+          group: GH Action parallel
+          browser: chrome
+          #start: npm start
+        env:
+          # pass the Dashboard record key as an environment variable
+          CYPRESS_RECORD_KEY: 4c244494-77de-49fd-bba3-efc3da3a1aec
